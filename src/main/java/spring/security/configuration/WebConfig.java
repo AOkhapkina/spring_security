@@ -13,11 +13,11 @@ import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 
 @Configuration
-@ComponentScan(basePackages = "spring.security")//<context:component-scan.../> in applicationContext
-@EnableWebMvc //==<mvc:annotation-driven/> in applicationContext
+@ComponentScan(basePackages = "spring.security")
+@EnableWebMvc
 public class WebConfig {
 
-    @Bean //создаем бин, который будет автоматически читать view файлы, но теперь в java, а не в applicationContext
+    @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("/WEB-INF/view/");
@@ -27,7 +27,7 @@ public class WebConfig {
     }
 
     @Bean
-    public DataSource getDataSource(){
+    public DataSource getDataSource() {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
